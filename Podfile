@@ -12,6 +12,7 @@ target 'The Wave' do
   pod 'FirebaseUI'
   pod 'TwitterCore', '~> 3.0.2.0'
   pod 'TwitterKit', '~> 3.2.1.0'
+  pod 'GoogleTagManager'
 
   pod 'GeoFire', :git => 'https://github.com/firebase/geofire-objc.git'
 
@@ -26,6 +27,7 @@ target 'The Wave' do
   pod 'WVCheckMark'
   pod 'Lightbox'
   pod 'DottedLineView'
+  pod 'GoogleAnalytics'
 
   target 'The Wave Tests' do
     inherit! :search_paths

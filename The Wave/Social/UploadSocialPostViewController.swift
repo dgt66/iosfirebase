@@ -44,7 +44,7 @@ class UploadSocialPostViewController: UIViewController, UIImagePickerControllerD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        Analytics.setScreenName("Upload Post", screenClass: "Social")
         if !firstLaunch || !didPickPhoto {
             presentCameraOptions()
             firstLaunch = true

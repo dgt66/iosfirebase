@@ -30,6 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Application delegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        guard let gai = GAI.sharedInstance() else {
+            assert(false, "Google Analytics not configured orrectly")
+        }
+        gai.tracker(withTrackingId: "UA-104302790-1")
+        gai.logger.logLevel = .verbose
 
         FirebaseApp.configure()
     

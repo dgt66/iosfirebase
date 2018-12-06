@@ -83,6 +83,8 @@ class ChatConversationViewController: UIViewController, UITableViewDataSource, U
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        Analytics.setScreenName("Conversation", screenClass: "Chat")
+        
         if let new = newConversation {
             if let tabBar = tabBarController as? SlidingSelectionTabBarController {
                 tabBar.hideShadow()
@@ -122,6 +124,7 @@ class ChatConversationViewController: UIViewController, UITableViewDataSource, U
         })
         
         userIsViewingConversation = nil
+        
     }
     
     deinit {

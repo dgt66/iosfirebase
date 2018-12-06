@@ -79,6 +79,11 @@ class SocialViewController: UIViewController, UITableViewDataSource, UITableView
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.setScreenName("Social", screenClass: "Social")
+    }
+    
     // MARK: - TableView datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

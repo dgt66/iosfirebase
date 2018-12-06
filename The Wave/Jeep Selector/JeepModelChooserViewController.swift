@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import Firebase
 
 protocol JeepModelChooserDelegate {
     func didChange(model: JeepModel)
@@ -65,6 +66,11 @@ class JeepModelChooserViewController: SeletectedImageViewController, JeepTypeVie
             typeViews.last!.selected = true
             product.jeepModel = typeViews.last!.type
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.setScreenName("Jeep Selector", screenClass: "Jeep Selector")
     }
 
     // MARK: - Actions

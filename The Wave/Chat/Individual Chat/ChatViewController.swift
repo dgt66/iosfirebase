@@ -168,6 +168,7 @@ class ChatViewController: JSQMessagesViewController, UIDynamicAnimatorDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.setScreenName("Chat", screenClass: "Chat")
         
         collectionView.collectionViewLayout.springinessEnabled = true
         

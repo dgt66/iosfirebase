@@ -126,6 +126,11 @@ class CreateReviewContainerViewController: UIViewController, UITextViewDelegate 
         grabProfileDetails()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.setScreenName("Create Review", screenClass: "Review")
+    }
+    
     // MARK: - TextView delegate
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -208,6 +213,10 @@ class CreateReviewContainerViewController: UIViewController, UITextViewDelegate 
                                              "productId": product.uid]
                 
                 let ref = Database.database().reference().child("reviews").child(userId)
+                Analytics.logEvent("Review", parameters: [
+                    "reviewer": uid,
+                    "reviewFor": self.product.ownerId
+                    ])
                 
                 if let key = reviewedBeforeKey {
                     let childUpdates = [key: review]

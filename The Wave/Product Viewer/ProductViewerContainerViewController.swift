@@ -149,6 +149,19 @@ class ProductViewerContainerViewController: UIViewController, UICollectionViewDa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        Analytics.setScreenName("Product " + product.uid, screenClass: "Product")
+        let item = [
+            AnalyticsParameterItemID: product.uid,
+            AnalyticsParameterItemName: product.name,
+            AnalyticsParameterPrice: product.price
+            ] as [String : Any]
+        let itemList = [item]
+        let parameters = [
+            "itemList" : itemList,
+            AnalyticsParameterItemList: "itemList"
+            ] as [String : Any]
+        Analytics.logEvent(AnalyticsEventViewItem, parameters: parameters)
+        
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
@@ -312,8 +325,26 @@ class ProductViewerContainerViewController: UIViewController, UICollectionViewDa
         let productRef = Database.database().reference()
         let childUpdates: [String: Any] = ["products/\(product.uid!)/isSold": true,
                                            "products/\(product.uid!)/soldModel": "SOLD" + product.jeepModel.name]
-
+        let item = [
+            AnalyticsParameterItemID: product.uid,
+            AnalyticsParameterItemName: product.name,
+            AnalyticsParameterPrice: product.price,
+            AnalyticsParameterQuantity: 1,
+            AnalyticsParameterCurrency: "USD",
+        ] as [String : Any]
+        let itemList = [item] as NSArray
+        let parameters = [
+            "items" : itemList,
+            AnalyticsParameterItemList: "items",
+            AnalyticsParameterValue: product.price,
+            AnalyticsParameterShipping: 0.00,
+            AnalyticsParameterTransactionID: "N887Y",
+            AnalyticsParameterCurrency: "USD",
+        ] as [String : Any]
+        
         productRef.updateChildValues(childUpdates)
+        
+        Analytics.logEvent(AnalyticsEventEcommercePurchase, parameters: parameters)
 
         dismiss(animated: true, completion: nil)
     }
@@ -352,6 +383,15 @@ class ProductViewerContainerViewController: UIViewController, UICollectionViewDa
     
     @IBAction func greenButtonTapped(_ sender: UIButton) {
         if sender.currentTitle == "Message" {
+            let analyticsProduct = [
+                AnalyticsParameterItemID : product.uid,
+                AnalyticsParameterItemName : product.name,
+                AnalyticsParameterValue : product.price,
+                AnalyticsParameterQuantity : 1
+                ] as [String : Any]
+            Analytics.logEvent(AnalyticsEventAddToCart, parameters: [
+                "items" : analyticsProduct
+                ])
             if !chatOpen {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: openChatControllerNotificationKey), object: nil, userInfo:
                     [Conversation.conversationIDKey: "",

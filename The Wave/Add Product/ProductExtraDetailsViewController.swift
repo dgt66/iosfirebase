@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Firebase
 
 class ProductExtraDetailsViewController: SeletectedImageViewController, JeepModelChooserDelegate, UITextViewDelegate, UITextFieldDelegate, LocationDelegate {
 
@@ -110,6 +111,12 @@ class ProductExtraDetailsViewController: SeletectedImageViewController, JeepMode
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         bottomBackgroundView.roundCorners(radius: 8.0)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.setScreenName("Product Detail", screenClass: "Product")
+        
     }
 
     // MARK: - UITextField delegate

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SettingsViewController: UIViewController {
 
@@ -28,6 +29,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.setScreenName("Profile Settings", screenClass: "Profile")
         
         if container.alpha != 1.0 {
             let point = CGPoint(x: container.frame.midX, y: container.frame.midY)

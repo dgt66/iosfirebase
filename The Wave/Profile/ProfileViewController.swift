@@ -183,6 +183,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        Analytics.setScreenName("Profile", screenClass: "Profile")
         var uid = ""
         if let id = userId {
             uid = id

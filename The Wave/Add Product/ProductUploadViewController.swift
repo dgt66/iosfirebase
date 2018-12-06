@@ -83,6 +83,7 @@ class ProductUploadViewController: SeletectedImageViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.setScreenName("Product Upload", screenClass: "Product")
         startUpload()
     }
 

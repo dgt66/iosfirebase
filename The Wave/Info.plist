@@ -21,10 +21,11 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.thewaveapp.thewave</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>twitterkit-***REMOVED***</string>
-				<string>***REMOVED***</string>
+				<string>tagmanager.c.com.thewaveapp.thewave</string>
 			</array>
 		</dict>
 	</array>

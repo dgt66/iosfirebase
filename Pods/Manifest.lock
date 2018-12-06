@@ -48,14 +48,14 @@ PODS:
   - FirebaseAnalytics (4.0.5):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
   - FirebaseAuth (4.4.1):
     - FirebaseAnalytics (~> 4.0)
-    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
     - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (4.0.13):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseDatabase (4.1.3):
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
@@ -72,7 +72,7 @@ PODS:
     - FirebaseABTesting (~> 1.0)
     - FirebaseAnalytics (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - Protobuf (~> 3.1)
   - FirebaseStorage (2.1.1):
     - FirebaseAnalytics (~> 4.0)
@@ -111,21 +111,29 @@ PODS:
     - TwitterKit (~> 3.0)
   - GeoFire (2.0.0):
     - Firebase/Database (~> 4.0)
+  - GoogleAnalytics (3.17.0)
   - GoogleSignIn (4.1.1):
-    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
-    - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
     - GTMOAuth2 (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleSymbolUtilities (1.1.2)
+  - GoogleTagManager (6.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - GoogleAnalytics (~> 3.17)
+    - GoogleUtilities (~> 1.3)
   - GoogleToolboxForMac/DebugUtils (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/Defines (2.1.3)
-  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
     - GoogleToolboxForMac/Defines (= 2.1.3)
-  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3):
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3)":
     - GoogleToolboxForMac/DebugUtils (= 2.1.3)
     - GoogleToolboxForMac/Defines (= 2.1.3)
-    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
-  - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.1.3)"
+  - GoogleUtilities (1.3.2):
+    - GoogleSymbolUtilities (~> 1.1)
   - gRPC (1.8.0):
     - gRPC-RxLibrary (= 1.8.0)
     - gRPC/Main (= 1.8.0)
@@ -204,6 +212,8 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - FirebaseUI
   - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
+  - GoogleAnalytics
+  - GoogleTagManager
   - JSQMessagesViewController
   - Lightbox
   - OneSignal (~> 2.0)
@@ -214,6 +224,58 @@ DEPENDENCIES:
   - TwitterCore (~> 3.0.2.0)
   - TwitterKit (~> 3.2.1.0)
   - WVCheckMark
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Bolts
+    - BoringSSL
+    - Cache
+    - Crashlytics
+    - CropViewController
+    - DottedLineView
+    - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - Firebase
+    - FirebaseABTesting
+    - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseCore
+    - FirebaseDatabase
+    - FirebaseFirestore
+    - FirebaseInstanceID
+    - FirebaseRemoteConfig
+    - FirebaseStorage
+    - FirebaseUI
+    - GoogleAnalytics
+    - GoogleSignIn
+    - GoogleSymbolUtilities
+    - GoogleTagManager
+    - GoogleToolboxForMac
+    - GoogleUtilities
+    - gRPC
+    - gRPC-Core
+    - gRPC-ProtoRPC
+    - gRPC-RxLibrary
+    - GTMOAuth2
+    - GTMSessionFetcher
+    - Hue
+    - Imaginary
+    - JSQMessagesViewController
+    - JSQSystemSoundPlayer
+    - KSCrash
+    - leveldb-library
+    - Lightbox
+    - nanopb
+    - OneSignal
+    - Protobuf
+    - ReachabilitySwift
+    - SDWebImage
+    - SwiftKeychainWrapper
+    - TOCropViewController
+    - TwitterCore
+    - TwitterKit
+    - WVCheckMark
 
 EXTERNAL SOURCES:
   GeoFire:
@@ -251,8 +313,12 @@ SPEC CHECKSUMS:
   FirebaseStorage: ab08d1c93a2feffa038fdd6693088b310ab1e6c6
   FirebaseUI: 883482fea73b73bbb488c55176f4c6ad128957eb
   GeoFire: 12dde45333e02aace5a8d921749095b9135cabc1
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleSignIn: 3fdaa34a2ba04dbd7a25d7db39aecb0da98d5bdc
+  GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
+  GoogleTagManager: 07acea48abe73aac17550b81bbf52a37db2d7dd6
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   gRPC: cc3f797b97bf221a9e535e8e012a6f99b1d7f797
   gRPC-Core: 250fd60016c4e4c413279f4002679b0e14e7df26
   gRPC-ProtoRPC: 5b934b29a95b94b0f871d4fc361ff52269476765
@@ -278,6 +344,6 @@ SPEC CHECKSUMS:
   TwitterKit: 205ac89824bbfe9e85a16c420d30bb7bcbedac45
   WVCheckMark: a62e278531f05fe3a42a056db6383c273f4d9e8b
 
-PODFILE CHECKSUM: dbea8ca3be21f2d2b0786e092ecac4579528470a
+PODFILE CHECKSUM: e7cbf3e085f303d44f8456b14313e7be2788ee99
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

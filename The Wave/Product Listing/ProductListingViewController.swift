@@ -133,6 +133,7 @@ class ProductListingViewController: UIViewController, UICollectionViewDataSource
 
             createListeners()
         }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -149,6 +150,109 @@ class ProductListingViewController: UIViewController, UICollectionViewDataSource
             selectionBar!.backgroundColor = UIColor.white
             productViewTypeView.addSubview(selectionBar!)
         }
+        Analytics.setScreenName("Product List", screenClass: "Product")
+        var itensArray = [] as NSArray
+        var count = 0
+        for product in products {
+            let analyticsProduct = [
+                AnalyticsParameterItemID : product.uid,
+                AnalyticsParameterItemName: product.name,
+                AnalyticsParameterValue : product.price,
+                AnalyticsParameterIndex : count
+            ] as [String:Any]
+            itensArray = itensArray.adding(analyticsProduct) as NSArray
+            count = count + 1
+            if count == 11 {
+                break
+            }
+        }
+        Analytics.logEvent(AnalyticsEventViewItemList, parameters: [
+            "viewList" : itensArray,
+            AnalyticsParameterItemList : "viewList"
+            ])
+        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+        tracker.set(kGAIUserId, value: "userID")
+        
+        guard let product = GAIEcommerceProduct.init()
+            .setId("p12345")
+            .setName("Android warhol t-shirt")
+            .setCategory("Apparel/T-shirts")
+            .setQuantity(1)
+            .setPrice(100)
+            .setCustomDimension(1, value: "Member") else { return }
+        
+        guard let productAction = GAIEcommerceProductAction.init()
+            .setAction("purchase")
+            .setTransactionId("transactionId")
+            .setRevenue(1)
+            .setShipping(2)
+            .setCouponCode("cuponCode")
+            .setCheckoutOption("Boleto") else { return }
+        
+        guard let builder = GAIDictionaryBuilder.createEvent(withCategory: "Ecommerce", action: "Purchase", label: nil, value: nil)
+            .setProductAction(productAction) else { return }
+        
+        tracker.set(GAIFields.customDimension(for: 33), value: "87")
+        
+        tracker.send(builder.build() as? [AnyHashable : Any])
+        
+        var parameters: [String : Any] = [:]
+        parameters["a"] = "1"
+        parameters["b"] = "2"
+        parameters["c"] = "3"
+        parameters["d"] = "4"
+        parameters["e"] = "5"
+        parameters["f"] = "6"
+        parameters["g"] = "7"
+        parameters["h"] = "8"
+        parameters["i"] = "9"
+        parameters["j"] = "10"
+        parameters["k"] = "11"
+        parameters["l"] = "12"
+        parameters["m"] = "13"
+        parameters["n"] = "14"
+        parameters["o"] = "15"
+        parameters["p"] = "16"
+        parameters["q"] = "17"
+        parameters["r"] = "18"
+        parameters["s"] = "19"
+        parameters["t"] = "20"
+        parameters["u"] = "21"
+        parameters["v"] = "22"
+        parameters["w"] = "23"
+        parameters["x"] = "24"
+        parameters["y"] = "25"
+        
+        Analytics.logEvent("TESTER1", parameters: parameters)
+        parameters = [:]
+        
+        parameters["aa"] = "null"
+        parameters["bb"] = "2"
+        parameters["cc"] = "3"
+        parameters["dd"] = "4"
+        parameters["ee"] = "5"
+        parameters["ff"] = "6"
+        parameters["gg"] = "7"
+        parameters["hh"] = "8"
+        parameters["ii"] = "9"
+        parameters["jj"] = "10"
+        parameters["kk"] = "11"
+        parameters["ll"] = "12"
+        parameters["mm"] = "13"
+        parameters["nn"] = "14"
+        parameters["oo"] = "15"
+        parameters["pp"] = "16"
+        parameters["qq"] = "17"
+        parameters["rr"] = "18"
+        parameters["ss"] = "19"
+        parameters["tt"] = "20"
+        parameters["uu"] = "21"
+        parameters["vv"] = "22"
+        parameters["ww"] = "23"
+        parameters["xx"] = "24"
+        parameters["yy"] = "25"
+        
+        Analytics.logEvent("TESTER2", parameters: parameters)
     }
     
     deinit {
@@ -227,6 +331,15 @@ class ProductListingViewController: UIViewController, UICollectionViewDataSource
             vc.modalPresentationStyle = .overCurrentContext
             
             let product = productArray()[indexPath.row]
+            let analyticsProduct = [
+                AnalyticsParameterItemID : product.uid,
+                AnalyticsParameterItemName : product.name,
+                AnalyticsParameterIndex : 1
+                ] as [String : Any]
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                "clickItem" : analyticsProduct,
+                AnalyticsParameterItemList : "clickItem"
+                ])
             vc.product = product
             
             if let tabController = tabBarController {

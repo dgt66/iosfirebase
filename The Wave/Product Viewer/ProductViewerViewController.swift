@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProductViewerViewController: ModalPresentationViewController {
 
@@ -41,6 +42,7 @@ class ProductViewerViewController: ModalPresentationViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.setScreenName("Product View", screenClass: "Product")
         
         if container.alpha != 1.0 {
             let point = CGPoint(x: container.frame.midX, y: container.frame.midY)

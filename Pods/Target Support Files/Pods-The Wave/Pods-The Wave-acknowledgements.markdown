@@ -1037,7 +1037,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+## GoogleAnalytics
+
+Copyright 2016 Google
+
 ## GoogleSignIn
+
+Copyright 2017 Google
+
+## GoogleSymbolUtilities
+
+Copyright 2016 Google
+
+## GoogleTagManager
 
 Copyright 2017 Google
 
@@ -1246,6 +1258,10 @@ Copyright 2017 Google
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+## GoogleUtilities
+
+Copyright 2016 Google
 
 ## Hue
 

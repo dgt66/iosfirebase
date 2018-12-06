@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PriceChooseViewController: SeletectedImageViewController, UITextFieldDelegate {
 
@@ -44,6 +45,19 @@ class PriceChooseViewController: SeletectedImageViewController, UITextFieldDeleg
         modalPresentationStyle = .overCurrentContext
         super.present(fromVc: fromVc, withDismissHandler: handler)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.setScreenName("Product Price", screenClass: "Product")
+        
+        var parameters: [String : Any] = [:]
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
 
     // MARK: - Actions
 
@@ -69,6 +83,13 @@ class PriceChooseViewController: SeletectedImageViewController, UITextFieldDeleg
     }
     
     @IBAction func nextPressed(_ sender: BigRedShadowButton) {
+        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+         tracker.set(GAIFields.customDimension(for: 2), value: "Hello")
+        
+        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+        tracker.send(GAIDictionaryBuilder.createEvent(withCategory: "Category", action: "Teste", label: "Teste", value: nil)?.set("Jorge", forKey: GAIFields.customDimension(for: 2)).build() as! [AnyHashable : Any])
+        
+        
         let vc = JeepModelChooserViewController(withProduct: product)
         vc.handler = handler
         navigationController?.pushViewController(vc, animated: true)

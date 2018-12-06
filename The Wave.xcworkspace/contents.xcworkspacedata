@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:container/GTM-N8P5KKF.json">
+   </FileRef>
+   <FileRef
       location = "group:The Wave.xcodeproj">
    </FileRef>
    <FileRef

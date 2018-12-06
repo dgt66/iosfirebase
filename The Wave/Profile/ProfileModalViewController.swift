@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileModalViewController: ModalPresentationViewController {
 
@@ -30,6 +31,7 @@ class ProfileModalViewController: ModalPresentationViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        Analytics.setScreenName("Profile Modal", screenClass: "Profile")
         
         if container.alpha != 1.0 {
             let point = CGPoint(x: container.frame.midX, y: container.frame.midY)
